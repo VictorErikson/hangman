@@ -1,0 +1,65 @@
+@mixin flexRow($justify:center, $align:center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: row;
+  }
+
+@mixin flexColumn($justify:center, $align:center) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $justify;
+    align-items: $align;
+  }
+
+
+
+@mixin btnBlue($borderRadius: 40px) {
+    display: inline-flex;
+    padding: 12px 64px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: $borderRadius;
+    background: $blue;
+    color: $white;
+    box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+    border: none;
+    font-size: $headingS;
+    text-transform: uppercase;
+    color: $white;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 38.4px */
+    letter-spacing: 1.6px;
+    text-align: center;
+    user-select: none;
+    background-clip: padding-box;
+    cursor: $cursor;
+}
+
+@mixin btnPurple() {
+  height: 40px;
+  width: 40px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+  box-shadow: 0px -2px 1px 1px RGBA(157, 45, 245, 0.4) inset;
+  @include flexRow();
+  cursor: $cursor;
+}
+
+@mixin headline() {
+  text-align: center;
+  // -webkit-text-stroke: 4px #243041;
+  font-size:$headingM;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 57.6px */
+  letter-spacing: 2.4px;
+  background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}

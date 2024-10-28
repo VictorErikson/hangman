@@ -1,0 +1,138 @@
+
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+header {
+    width: 100%;
+    @include flexRow();
+    justify-content: space-between;
+    align-items: center;
+   
+    .back{
+        @include btnPurple();
+        .backArrow {
+            width: 20px;
+            // margin-bottom: 2px;
+        }
+    }
+    .headline{
+        @include headline();
+        // -webkit-text-stroke: 4px #243041;
+    }
+    // .headline {
+    //     position: relative;
+    //     font-size: $headingM;
+        
+    //     // The stroke layer (bottom text)
+    //     &::before {
+    //         content: attr(class);
+    //         position: absolute;
+    //         top: 0;
+    //         left: 0;
+    //         z-index: -1;
+    //         color: transparent;
+    //         -webkit-text-stroke: 4px #243041;
+    //     }
+    
+    //     // The gradient text on top
+    //     background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
+    //     background-clip: text;
+    //     -webkit-background-clip: text;
+    //     -webkit-text-fill-color: transparent;
+    // }
+//     .headline {
+//         font-size: $headingM;
+        
+//         // Apply multiple shadows to simulate an outer stroke
+//         text-shadow: 4px 4px 0 #243041, -4px 4px 0 #243041, 4px -4px 0 #243041, -4px -4px 0 #243041;
+        
+//         background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
+//         background-clip: text;
+//         -webkit-background-clip: text;
+//         -webkit-text-fill-color: transparent;
+//       }
+}
+
+.rulesContainer {
+    min-height: 100vh;
+    width: 100vw;
+    //overflow: hidden;
+    // min-height: 100%;
+    .contaier {
+        margin: 32px 26px;
+        height: 90%;
+        // min-height: 100%;
+        
+
+        main {
+            min-width: 100%;
+            
+            flex-grow: 1;
+            @include flexColumn();
+            justify-content: center;
+            min-height: 100%; // Allow main content to grow as needed
+            overflow: visible;
+
+            section {
+                min-width: 100%;
+                background: $white;
+                border-radius: 20px;
+                padding: 10%;
+                @include flexColumn();
+                margin: 1rem;
+                overflow: hidden;
+
+                .sectionContent {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    flex-direction: column; 
+                    
+                    .sectionCaption {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        margin-bottom: 5%;
+
+                        h2 {
+                            color: $blue;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 120%; /* 28.8px */
+                            letter-spacing: 1.2px;
+                            text-transform: uppercase;
+                        }
+
+                        h3 {
+                            color: $darkNavy;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 120%; /* 28.8px */
+                            letter-spacing: 1.2px;
+                            text-transform: uppercase;
+                            margin-left: 16px;
+                        }
+                    }
+
+                    p {
+                        align-self: stretch;
+                        color: #887DC0;
+                        font-family: "Mouse Memoirs";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 120%; /* 19.2px */
+                        letter-spacing: 0.8px;
+                    }
+                }
+            }
+        }
+    }
+}
+            

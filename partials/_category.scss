@@ -1,0 +1,29 @@
+.categoryContainer {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+
+    .container {
+        margin: 32px 26px;
+        min-height: 80%;
+        display: flex;
+        flex-direction: column;
+
+        header {
+            @include flexRow();
+            justify-content: space-between;
+        }
+
+        main {
+            @include flexColumn();
+            min-height: 100%;
+            flex-grow: 1;
+            .categoryButton{
+                @include btnBlue(20px);
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.headerIngame {
+    width: 100%;
+    @include flexRow();
+    justify-content: space-between;
+    align-items: center;
+   
+    .menu{
+        @include btnPurple();
+        .menuSymbol {
+            width: 20px;
+        }
+    }
+    .headline{
+        @include headline();
+    }
+
+}

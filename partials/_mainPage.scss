@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'MouseMemoirs', sans-serif;
+}
+//Allmän styling
+
+.notSelectable {
+    user-select: none;
+}
+
+
+.containerBackgroundHome.containerBackground{
+    background-image: url(src/assets/images/background-mobile.svg);
+
+}
+
+
+
+.containerBackground {
+    width: 100vw;
+    height: 100vh;
+    @include flexColumn();
+    flex-shrink: 1;
+    background: linear-gradient(180deg, rgba(26, 4, 58, 0.75) 0%, rgba(21, 18, 120, 0.75) 70.31%, rgba(43, 22, 119, 0.75) 100%), url(src/assets/images/background-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+   
+
+    .menuBackground {
+        width: 324px;
+        height: 481px;
+        border-radius: 48px;
+        background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
+        box-shadow: 0px -8px 0px 4px #140E66 inset, 0px 6px 0px 8px #2463FF inset;
+        position: relative;
+        @include flexColumn();
+        justify-content: flex-end;
+        flex-shrink: 1;
+
+        .logo {
+            width: 80%;
+            position: absolute;
+            top: -10%;
+            flex-shrink: 1;
+        }
+
+        .playButton {
+            margin-bottom: 15%; 
+            // display: inline-block;
+            // border: none;
+            // border-radius: 50%; 
+            // box-shadow: 0px 4px 1px 5px rgba(50, 50, 50, 0.888), 0px -14px 1px 60px purple inset; 
+            width: 200px;
+            height: 200px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+            box-shadow: 0px -4px 0px 5px #243041 inset, 0px -12px 0px 11px #9D2DF5 inset;
+            @include flexRow();
+            cursor: $cursor;
+            flex-shrink: 1;
+            
+        }
+        .playButton:hover {
+            background: linear-gradient(180deg, #ffa0ff 30%, #95b3ff 100%);
+        }
+        
+
+        .howToPlay {
+            @include btnBlue();
+            margin-bottom: 20%;
+            text-decoration: none;
+            cursor: $cursor;
+            flex-shrink: 1;
+        }
+        .howToPlay:hover {
+            border-radius: 40px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
+            box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+            cursor: $cursor;
+        }
+    }
+}

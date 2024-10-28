@@ -1,0 +1,319 @@
+@font-face {
+  font-family: "MouseMemoirs";
+  src: url("../src/assets/fonts/MouseMemoirs-Regular.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "MouseMemoirs", sans-serif;
+}
+
+.notSelectable {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.containerBackgroundHome.containerBackground {
+  background-image: url(src/assets/images/background-mobile.svg);
+}
+
+.containerBackground {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 1;
+  background: linear-gradient(180deg, rgba(26, 4, 58, 0.75) 0%, rgba(21, 18, 120, 0.75) 70.31%, rgba(43, 22, 119, 0.75) 100%), url(src/assets/images/background-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.containerBackground .menuBackground {
+  width: 324px;
+  height: 481px;
+  border-radius: 48px;
+  background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
+  box-shadow: 0px -8px 0px 4px #140E66 inset, 0px 6px 0px 8px #2463FF inset;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 1;
+}
+.containerBackground .menuBackground .logo {
+  width: 80%;
+  position: absolute;
+  top: -10%;
+  flex-shrink: 1;
+}
+.containerBackground .menuBackground .playButton {
+  margin-bottom: 15%;
+  width: 200px;
+  height: 200px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+  box-shadow: 0px -4px 0px 5px #243041 inset, 0px -12px 0px 11px #9D2DF5 inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  cursor: url("src/assets/Pointer.svg"), auto;
+  flex-shrink: 1;
+}
+.containerBackground .menuBackground .playButton:hover {
+  background: linear-gradient(180deg, #ffa0ff 30%, #95b3ff 100%);
+}
+.containerBackground .menuBackground .howToPlay {
+  display: inline-flex;
+  padding: 12px 64px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 40px;
+  background: #2463FF;
+  color: #FFFFFF;
+  box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+  border: none;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 38.4px */
+  letter-spacing: 1.6px;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-clip: padding-box;
+  cursor: url("src/assets/Pointer.svg"), auto;
+  margin-bottom: 20%;
+  text-decoration: none;
+  cursor: url("src/assets/Pointer.svg"), auto;
+  flex-shrink: 1;
+}
+.containerBackground .menuBackground .howToPlay:hover {
+  border-radius: 40px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
+  box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+  cursor: url("src/assets/Pointer.svg"), auto;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+header .back {
+  height: 40px;
+  width: 40px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+  box-shadow: 0px -2px 1px 1px RGBA(157, 45, 245, 0.4) inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  cursor: url("src/assets/Pointer.svg"), auto;
+}
+header .back .backArrow {
+  width: 20px;
+}
+header .headline {
+  text-align: center;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 57.6px */
+  letter-spacing: 2.4px;
+  background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rulesContainer {
+  min-height: 100vh;
+  width: 100vw;
+}
+.rulesContainer .contaier {
+  margin: 32px 26px;
+  height: 90%;
+}
+.rulesContainer .contaier main {
+  min-width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  overflow: visible;
+}
+.rulesContainer .contaier main section {
+  min-width: 100%;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  overflow: hidden;
+}
+.rulesContainer .contaier main section .sectionContent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.rulesContainer .contaier main section .sectionContent .sectionCaption {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 5%;
+}
+.rulesContainer .contaier main section .sectionContent .sectionCaption h2 {
+  color: #2463FF;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 28.8px */
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.rulesContainer .contaier main section .sectionContent .sectionCaption h3 {
+  color: #261676;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 28.8px */
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-left: 16px;
+}
+.rulesContainer .contaier main section .sectionContent p {
+  align-self: stretch;
+  color: #887DC0;
+  font-family: "Mouse Memoirs";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 19.2px */
+  letter-spacing: 0.8px;
+}
+
+.categoryContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+.categoryContainer .container {
+  margin: 32px 26px;
+  min-height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.categoryContainer .container header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.categoryContainer .container main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  flex-grow: 1;
+}
+.categoryContainer .container main .categoryButton {
+  display: inline-flex;
+  padding: 12px 64px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 20px;
+  background: #2463FF;
+  color: #FFFFFF;
+  box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+  border: none;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 38.4px */
+  letter-spacing: 1.6px;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-clip: padding-box;
+  cursor: url("src/assets/Pointer.svg"), auto;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.headerIngame {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.headerIngame .menu {
+  height: 40px;
+  width: 40px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+  box-shadow: 0px -2px 1px 1px RGBA(157, 45, 245, 0.4) inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  cursor: url("src/assets/Pointer.svg"), auto;
+}
+.headerIngame .menu .menuSymbol {
+  width: 20px;
+}
+.headerIngame .headline {
+  text-align: center;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 57.6px */
+  letter-spacing: 2.4px;
+  background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}/*# sourceMappingURL=style.css.map */
