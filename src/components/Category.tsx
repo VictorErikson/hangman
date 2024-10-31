@@ -7,8 +7,21 @@ function Category() {
     navigate("/");
   };
 
-  const goToIngame = () => {
-    navigate("/Ingame");
+  // const goToIngame = () => {
+  //   navigate("/Ingame");
+  // };
+  const handleCategoryClick = (category: string) => {
+    fetch("/data.json")
+      .then((response) => response.json())
+      .then((jsonData) => {
+        // Access the specific category array inside "categories"
+        const categoryData = jsonData.categories[category];
+        const randomItem =
+          categoryData[Math.floor(Math.random() * categoryData.length)];
+        // Navigate to /Ingame with the category data
+        navigate("/Ingame", { state: { selectedItem: randomItem } });
+      })
+      .catch((error) => console.error("Error loading data:", error));
   };
 
   return (
@@ -26,14 +39,42 @@ function Category() {
             <h1 className="headline">Pick a Category</h1>
           </header>
           <main>
-            <button onClick={goToIngame} className="categoryButton">
+            <button
+              onClick={() => handleCategoryClick("Movies")}
+              className="categoryButton"
+            >
               Movies
             </button>
-            <button className="categoryButton">TV Shows</button>
-            <button className="categoryButton">Countries</button>
-            <button className="categoryButton">Capital Cities</button>
-            <button className="categoryButton">Animals</button>
-            <button className="categoryButton">Sports</button>
+            <button
+              onClick={() => handleCategoryClick("TV Shows")}
+              className="categoryButton tvShows"
+            >
+              TV Shows
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Countries")}
+              className="categoryButton countries"
+            >
+              Countries
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Capital Cities")}
+              className="categoryButton capitalCities"
+            >
+              Capital Cities
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Animals")}
+              className="categoryButton animals"
+            >
+              Animals
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Sports")}
+              className="categoryButton sports"
+            >
+              Sports
+            </button>
           </main>
         </div>
       </div>
