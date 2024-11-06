@@ -1,9 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { playSFX, addHoverSoundEffect } from "./Utils";
 
 function Category() {
   const navigate = useNavigate();
+  const audioSelect = new Audio("/src/assets/Music/select_correct.wav");
+  const audioHover = "/src/assets/SFX/select/hoverCategory.mp3";
+  const audioSelectCat = new Audio(
+    "/src/assets/SFX/select/selectCategory/correct-2-46134.mp3"
+  );
 
   const goToHomePage = () => {
+    playSFX(audioSelect);
     navigate("/");
   };
 
@@ -11,6 +19,12 @@ function Category() {
   //   navigate("/Ingame");
   // };
   const handleCategoryClick = (category: string) => {
+    localStorage.removeItem("savedWord");
+    localStorage.removeItem("revealedLetters");
+    localStorage.removeItem("usedButtons");
+    localStorage.removeItem("errorCount");
+    localStorage.removeItem("isPlaying");
+
     fetch("/data.json")
       .then((response) => response.json())
       .then((jsonData) => {
@@ -19,10 +33,24 @@ function Category() {
         const randomItem =
           categoryData[Math.floor(Math.random() * categoryData.length)];
         // Navigate to /Ingame with the category data
-        navigate("/Ingame", { state: { selectedItem: randomItem } });
+        playSFX(audioSelectCat, 0.3);
+        navigate("/Ingame", { state: { selectedItem: randomItem, category } });
       })
       .catch((error) => console.error("Error loading data:", error));
   };
+
+  useEffect(() => {
+    // Apply hover sound to all elements with the class .categoryButton
+    const cleanup = addHoverSoundEffect(
+      ".categoryButton",
+      audioHover,
+      100,
+      0.2
+    );
+
+    // Cleanup event listeners when component unmounts
+    return cleanup;
+  }, []); // Empty dependency array ensures this runs once after component mounts
 
   return (
     <div className="containerBackground">

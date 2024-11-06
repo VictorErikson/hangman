@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { playSFX } from "./Utils";
 
 function RulesPage() {
   const navigate = useNavigate();
+  const audioSelect = new Audio("/src/assets/Music/select_correct.wav");
 
   const goToHomePage = () => {
+    playSFX(audioSelect);
     navigate("/");
   };
 

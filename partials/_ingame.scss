@@ -10,8 +10,8 @@
             @include flexRow();
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            padding-top: 50px;
+            padding: 10px;
+            padding-top: 30px;
             .left{
                 @include flexRow();
                 .menu{
@@ -20,18 +20,10 @@
                         width: 20px;
                     }
                 }
-                .headline{
-                    @include headline();
-                    font-size: 40px;
-                    background: white;
-                    background-clip: text;
-                    padding-left: 15px
-                }
             }
 
             .right{
                 @include flexRow();
-                padding-right: 8px;
 
                 .healthbar{
                     width: 57px;
@@ -120,19 +112,37 @@
                         background-position: -14px -7px; /* Adjust to align the gradient */
                     }
                 }
+                .volume{
+                    background: transparent;
+                    border: none;
+                    padding-left: 15px;
+                    
+                    img{
+                        height: 30px;
+                    }
+                }
             }
         }
 
         main{
-            padding: 20px;
+            padding: 10px;
             width: 100vw;
+            height: 100%;
+            @include flexColumn();
+            justify-content: space-between;
+
+            .headline{
+                @include headline();
+                font-size: 40px;
+                background: white;
+                background-clip: text;
+            }
             
 
             .wordContainer{
                 @include flexRow;
                 width: 100%;
                 flex-wrap: wrap;
-                padding-bottom: 150px;
                 column-gap: 40px;
                 
                 .word{
@@ -140,21 +150,29 @@
     
                     .keyWord{
                 
-                        color: var(--Dark-Navy, #261676);
+                        color: $white;
+                        background: var(--Blue, #2463FF);
+                        box-shadow: 0px 0px 0px 0px #140E66 inset, 0px 3px 0px 1px #3C74FF inset;
                         box-sizing: border-box;
                         text-align: center;
                         font-family: "Mouse Memoirs";
-                        font-size: 24px;
+                        font-size: 40px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 150%; /* 36px */
                         letter-spacing: -0.48px;
-                        border-radius: 16px;
-                        width: 40px;
-                        height: 66px;
-                        background: white;
+                        border-radius: 10px;
+                        // width: 27px;
+                        max-width: 66px;
+                        min-width: 27px;
+                        height: 63px;
                         background-clip: content-box;
-                        border: 4px solid transparent;
+                        border: 2px solid transparent;
+                        user-select: none;
+                    }
+                    .keyWord.hidden{
+                        color: transparent;
+                        opacity: 0.3;
                     }
                 }
                 
@@ -163,7 +181,8 @@
             .keyboard{
                 display: flex;
                 width: 100%;
-                padding-bottom: 150px;
+                padding-bottom: 15vh;
+                padding-top: 10vh;
                 flex-wrap: wrap;
 
                 .key{
@@ -176,12 +195,24 @@
                     font-weight: 400;
                     line-height: 150%; /* 36px */
                     letter-spacing: -0.48px;
-                    border-radius: 16px;
+                    border-radius: 12px;
                     width: calc(100% / 9);
                     background: white;
                     background-clip: content-box;
                     border: 4px solid transparent;
                     aspect-ratio: 1 / 1.5;
+                    user-select: none;
+
+                    &:hover{
+                        opacity: 0.6;
+                    }
+                    &:active{
+                        opacity: 0.4;
+                    }
+                }
+
+                .key.used{
+                    opacity: 0.2;
                 }
             }
         }

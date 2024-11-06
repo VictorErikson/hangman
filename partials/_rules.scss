@@ -16,45 +16,24 @@ header {
         @include btnPurple();
         .backArrow {
             width: 20px;
-            // margin-bottom: 2px;
+        }
+        transition: all 0.4s;
+            
+            
+        &:hover {
+            transform: scale(1.06);        
+        }
+        &:active {
+            transition: all 0.2s;
+            transform: scale(0.9);
+            filter: brightness(0.5);
         }
     }
     .headline{
         @include headline();
-        // -webkit-text-stroke: 4px #243041;
+
     }
-    // .headline {
-    //     position: relative;
-    //     font-size: $headingM;
-        
-    //     // The stroke layer (bottom text)
-    //     &::before {
-    //         content: attr(class);
-    //         position: absolute;
-    //         top: 0;
-    //         left: 0;
-    //         z-index: -1;
-    //         color: transparent;
-    //         -webkit-text-stroke: 4px #243041;
-    //     }
     
-    //     // The gradient text on top
-    //     background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
-    //     background-clip: text;
-    //     -webkit-background-clip: text;
-    //     -webkit-text-fill-color: transparent;
-    // }
-//     .headline {
-//         font-size: $headingM;
-        
-//         // Apply multiple shadows to simulate an outer stroke
-//         text-shadow: 4px 4px 0 #243041, -4px 4px 0 #243041, 4px -4px 0 #243041, -4px -4px 0 #243041;
-        
-//         background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
-//         background-clip: text;
-//         -webkit-background-clip: text;
-//         -webkit-text-fill-color: transparent;
-//       }
 }
 
 .rulesContainer {

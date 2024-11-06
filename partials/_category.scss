@@ -23,6 +23,17 @@
                 @include btnBlue(20px);
                 width: 100%;
                 margin-bottom: 1rem;
+
+              
+                // border-bottom: 4px solid #140E66;
+                // border-top: 6px solid #3C74FF;
+                // box-shadow: none;
+
+                // box-shadow: inset 0px 6px 0px 0px #3C74FF,  /* Top */
+                // inset 0px -5px 0px 0px #140E66; /* Bottom */
+
+                // box-shadow:  -3px 0px 1px #140E66 inset, 0px 3px 0px 2px #3C74FF inset;
+                
             }
         }
     }

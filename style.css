@@ -38,7 +38,7 @@
   height: 481px;
   border-radius: 48px;
   background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
-  box-shadow: 0px -8px 0px 4px #140E66 inset, 0px 6px 0px 8px #2463FF inset;
+  box-shadow: 0px 9px 0px 3px #140E66, inset 0px 8px 0px 3px #2463FF;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -52,6 +52,9 @@
   position: absolute;
   top: -10%;
   flex-shrink: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .containerBackground .menuBackground .playButton {
   margin-bottom: 15%;
@@ -59,16 +62,32 @@
   height: 200px;
   border-radius: 999px;
   background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
-  box-shadow: 0px -4px 0px 5px #243041 inset, 0px -12px 0px 11px #9D2DF5 inset;
+  box-shadow: 0px 4px 0px 5px #243041, 0px -12px 0px 3px #9D2DF5 inset;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   cursor: url("src/assets/Pointer.svg"), auto;
   flex-shrink: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: all 0.4s;
+}
+.containerBackground .menuBackground .playButton .playSymbol {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .containerBackground .menuBackground .playButton:hover {
   background: linear-gradient(180deg, #ffa0ff 30%, #95b3ff 100%);
+  transform: scale(1.06);
+}
+.containerBackground .menuBackground .playButton:active {
+  transition: all 0.2s;
+  background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+  transform: scale(0.9);
+  filter: brightness(0.5);
 }
 .containerBackground .menuBackground .howToPlay {
   display: inline-flex;
@@ -79,7 +98,7 @@
   border-radius: 40px;
   background: #2463FF;
   color: #FFFFFF;
-  box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+  box-shadow: 0px 2px 0px 3px #140E66, -2px 5px 0px 2px #3C74FF inset;
   border: none;
   font-size: 32px;
   text-transform: uppercase;
@@ -94,16 +113,24 @@
           user-select: none;
   background-clip: padding-box;
   cursor: url("src/assets/Pointer.svg"), auto;
+  user-select: none;
   margin-bottom: 20%;
   text-decoration: none;
   cursor: url("src/assets/Pointer.svg"), auto;
   flex-shrink: 1;
+  transition: all 0.4s;
 }
 .containerBackground .menuBackground .howToPlay:hover {
-  border-radius: 40px;
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
-  box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
   cursor: url("src/assets/Pointer.svg"), auto;
+}
+.containerBackground .menuBackground .howToPlay:hover {
+  transform: scale(1.06);
+}
+.containerBackground .menuBackground .howToPlay:active {
+  transition: all 0.2s;
+  transform: scale(0.9);
+  filter: brightness(0.5);
 }
 
 html, body {
@@ -135,9 +162,27 @@ header .back {
   align-items: center;
   flex-direction: row;
   cursor: url("src/assets/Pointer.svg"), auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: all 0.4s;
+}
+header .back:hover {
+  background: linear-gradient(180deg, #fca1fc 16.42%, #9eb9ff 100%);
+}
+header .back:active {
+  background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
 }
 header .back .backArrow {
   width: 20px;
+}
+header .back:hover {
+  transform: scale(1.06);
+}
+header .back:active {
+  transition: all 0.2s;
+  transform: scale(0.9);
+  filter: brightness(0.5);
 }
 header .headline {
   text-align: center;
@@ -261,7 +306,7 @@ header .headline {
   border-radius: 20px;
   background: #2463FF;
   color: #FFFFFF;
-  box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+  box-shadow: 0px 2px 0px 3px #140E66, -2px 5px 0px 2px #3C74FF inset;
   border: none;
   font-size: 32px;
   text-transform: uppercase;
@@ -276,8 +321,13 @@ header .headline {
           user-select: none;
   background-clip: padding-box;
   cursor: url("src/assets/Pointer.svg"), auto;
+  user-select: none;
   width: 100%;
   margin-bottom: 1rem;
+}
+.categoryContainer .container main .categoryButton:hover {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
+  cursor: url("src/assets/Pointer.svg"), auto;
 }
 
 .ingameContainer .container {
@@ -295,8 +345,8 @@ header .headline {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  padding-top: 50px;
+  padding: 10px;
+  padding-top: 30px;
 }
 .ingameContainer .container .headerIngame .left {
   display: flex;
@@ -316,32 +366,24 @@ header .headline {
   align-items: center;
   flex-direction: row;
   cursor: url("src/assets/Pointer.svg"), auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.ingameContainer .container .headerIngame .left .menu:hover {
+  background: linear-gradient(180deg, #fca1fc 16.42%, #9eb9ff 100%);
+}
+.ingameContainer .container .headerIngame .left .menu:active {
+  background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
 }
 .ingameContainer .container .headerIngame .left .menu .menuSymbol {
   width: 20px;
-}
-.ingameContainer .container .headerIngame .left .headline {
-  text-align: center;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%; /* 57.6px */
-  letter-spacing: 2.4px;
-  background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 40px;
-  background: white;
-  background-clip: text;
-  padding-left: 15px;
 }
 .ingameContainer .container .headerIngame .right {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  padding-right: 8px;
 }
 .ingameContainer .container .headerIngame .right .healthbar {
   width: 57px;
@@ -418,9 +460,38 @@ header .headline {
   left: 7px;
   background-position: -14px -7px; /* Adjust to align the gradient */
 }
+.ingameContainer .container .headerIngame .right .volume {
+  background: transparent;
+  border: none;
+  padding-left: 15px;
+}
+.ingameContainer .container .headerIngame .right .volume img {
+  height: 30px;
+}
 .ingameContainer .container main {
-  padding: 20px;
+  padding: 10px;
   width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.ingameContainer .container main .headline {
+  text-align: center;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 57.6px */
+  letter-spacing: 2.4px;
+  background: linear-gradient(180deg, #67B6FF 16.42%, #FFF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  background: white;
+  background-clip: text;
 }
 .ingameContainer .container main .wordContainer {
   display: flex;
@@ -429,31 +500,40 @@ header .headline {
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
-  padding-bottom: 150px;
   -moz-column-gap: 40px;
        column-gap: 40px;
 }
 .ingameContainer .container main .wordContainer .word .keyWord {
-  color: var(--Dark-Navy, #261676);
+  color: #FFFFFF;
+  background: var(--Blue, #2463FF);
+  box-shadow: 0px 0px 0px 0px #140E66 inset, 0px 3px 0px 1px #3C74FF inset;
   box-sizing: border-box;
   text-align: center;
   font-family: "Mouse Memoirs";
-  font-size: 24px;
+  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 36px */
   letter-spacing: -0.48px;
-  border-radius: 16px;
-  width: 40px;
-  height: 66px;
-  background: white;
+  border-radius: 10px;
+  max-width: 66px;
+  min-width: 27px;
+  height: 63px;
   background-clip: content-box;
-  border: 4px solid transparent;
+  border: 2px solid transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.ingameContainer .container main .wordContainer .word .keyWord.hidden {
+  color: transparent;
+  opacity: 0.3;
 }
 .ingameContainer .container main .keyboard {
   display: flex;
   width: 100%;
-  padding-bottom: 150px;
+  padding-bottom: 15vh;
+  padding-top: 10vh;
   flex-wrap: wrap;
 }
 .ingameContainer .container main .keyboard .key {
@@ -466,10 +546,22 @@ header .headline {
   font-weight: 400;
   line-height: 150%; /* 36px */
   letter-spacing: -0.48px;
-  border-radius: 16px;
+  border-radius: 12px;
   width: 11.1111111111%;
   background: white;
   background-clip: content-box;
   border: 4px solid transparent;
   aspect-ratio: 1/1.5;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.ingameContainer .container main .keyboard .key:hover {
+  opacity: 0.6;
+}
+.ingameContainer .container main .keyboard .key:active {
+  opacity: 0.4;
+}
+.ingameContainer .container main .keyboard .key.used {
+  opacity: 0.2;
 }/*# sourceMappingURL=style.css.map */
