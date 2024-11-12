@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, createElement } from "react";
 import { playSFX, addHoverSoundEffect } from "./Utils";
 
 function Ingame() {
@@ -36,6 +36,13 @@ function Ingame() {
     localStorage.setItem("usedButtons", JSON.stringify(usedButtons));
     localStorage.setItem("errorCount", error.toString());
   }, [word, revealedLetters, usedButtons, error]);
+
+  useEffect(() => {
+    const healthBar = document.querySelector(".healthLeft") as HTMLElement;
+    if (healthBar && error > 0) {
+      healthBar.classList.add(`error${error}`);
+    }
+  }, [error]);
 
   // Set volume and play the music if previously playing
   useEffect(() => {
@@ -94,8 +101,42 @@ function Ingame() {
     };
   };
 
+  //mall för meny
+  // const menuLogo: HTMLElement = document.createElement("h2");
+
+  const menuLogo: HTMLImageElement = document.createElement("img");
+  menuLogo.classList.add("menuHeader");
+  menuLogo.alt = "logo";
+  menuLogo.draggable = false;
+
+  const containerMenuBtns: HTMLDivElement = document.createElement("div");
+  containerMenuBtns.classList.add("containerMenuBtns");
+
+  const menu: HTMLDivElement = document.createElement("div");
+  menu.classList.add("menuBackground");
+
+  const continueBtn: HTMLButtonElement = document.createElement("button");
+  continueBtn.classList.add("blueBtn");
+  continueBtn.textContent = "CONTINUE";
+
+  const newCatBtn: HTMLButtonElement = document.createElement("button");
+  newCatBtn.classList.add("blueBtn");
+  newCatBtn.textContent = "NEW CATEGORY";
+
+  const quitBtn: HTMLButtonElement = document.createElement("button");
+  quitBtn.classList.add("purpleBtn");
+  quitBtn.textContent = "QUIT GAME";
+
+  containerMenuBtns.append(continueBtn, newCatBtn, quitBtn);
+  menu.append(menuLogo, containerMenuBtns);
+
   if (error === 8) {
-    lost();
+    const container = document.querySelector(".ingameContainer");
+    menuLogo.src = "src/assets/images/YouLose.svg";
+    if (!container?.querySelector(".menuBackground")) {
+      container?.append(menu);
+      // menuLogo.textContent = "You Lose";
+    }
   }
 
   //sound toggle icon

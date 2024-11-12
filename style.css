@@ -564,4 +564,88 @@ header .headline {
 }
 .ingameContainer .container main .keyboard .key.used {
   opacity: 0.2;
+}
+
+.ingameContainer {
+  position: relative;
+}
+.ingameContainer .menuBackground {
+  width: 324px;
+  height: 481px;
+  border-radius: 48px;
+  background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
+  box-shadow: 0px 9px 0px 3px #140E66, inset 0px 8px 0px 3px #2463FF;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 1;
+  z-index: 2;
+}
+.ingameContainer .menuBackground .menuHeader {
+  width: 80%;
+  position: absolute;
+  top: -10%;
+  flex-shrink: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  z-index: 3;
+  overflow: visible;
+}
+.ingameContainer .menuBackground .containerMenuBtns {
+  display: flex;
+  flex-direction: column;
+}
+.ingameContainer .menuBackground .containerMenuBtns button {
+  margin-bottom: 20%;
+  text-decoration: none;
+  cursor: url("src/assets/Pointer.svg"), auto;
+  flex-shrink: 1;
+  transition: all 0.4s;
+  display: inline-flex;
+  padding: 12px 64px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 40px;
+  background: #2463FF;
+  color: #FFFFFF;
+  box-shadow: 0px 2px 0px 3px #140E66, -2px 5px 0px 2px #3C74FF inset;
+  border: none;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 38.4px */
+  letter-spacing: 1.6px;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-clip: padding-box;
+  cursor: url("src/assets/Pointer.svg"), auto;
+  user-select: none;
+}
+.ingameContainer .menuBackground .containerMenuBtns button:hover {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
+  cursor: url("src/assets/Pointer.svg"), auto;
+}
+.ingameContainer .menuBackground .containerMenuBtns button:hover {
+  transform: scale(1.06);
+}
+.ingameContainer .menuBackground .containerMenuBtns button:active {
+  transition: all 0.2s;
+  transform: scale(0.9);
+  filter: brightness(0.5);
+}
+.ingameContainer .menuBackground .containerMenuBtns .purpleBtn {
+  background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+  box-shadow: 0px 2px 0px 3px #140E66, -2px 5px 0px 2px #C642FB inset;
+}
+.ingameContainer .menuBackground .containerMenuBtns .purpleBtn:hover {
+  background: linear-gradient(180deg, #FE71FE 65%, #7199FF 100%);
 }/*# sourceMappingURL=style.css.map */
