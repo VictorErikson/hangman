@@ -8,6 +8,9 @@
         background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
         box-shadow: 0px 9px 0px 3px #140E66, inset 0px 8px 0px 3px #2463FF;;
         position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         @include flexColumn();
         justify-content: flex-end;
         flex-shrink: 1;
