@@ -10,6 +10,12 @@ function Ingame() {
   const audioWrong = new Audio("/src/assets/Music/wrong.wav");
   const audioSelectCorrect = new Audio("/src/assets/Music/select_correct.wav");
   const audioHover = "/src/assets/SFX/select/hoverCategory.mp3";
+  const audioSelect = new Audio("/src/assets/Music/select_correct.wav");
+  const audioLost = new Audio("/src/assets/SFX/lost/lost.mp3");
+  const audioWon = new Audio("/src/assets/SFX/win/winning.mp3");
+  const audioSelectMenu = new Audio(
+    "/src/assets/SFX/select/selectCategory/correct-2-46134.mp3"
+  );
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -80,6 +86,18 @@ function Ingame() {
         setRevealedLetters((prev) => [...prev, letterBtn]);
         foundMatch = true;
         playSFX(audioSelectCorrect);
+        //trigger won if all words are shown
+        const letters = document.querySelectorAll(".keyWord");
+        if (letters) {
+          const noneAreHidden = Array.from(letters).every(
+            (letter) => !letter.classList.contains("hidden")
+          );
+          if (noneAreHidden) {
+            playSFX(audioWon, 0.1);
+            showMenu("won");
+            localStorage.setItem("menu", "won");
+          }
+        }
       }
     });
 
@@ -89,16 +107,6 @@ function Ingame() {
     }
 
     setUsedButtons((prev) => [...prev, letterBtn]);
-  };
-
-  const lost = () => {
-    const [isGameOver, setIsGameOver] = useState(false);
-
-    const handleGameOver = () => {
-      setIsGameOver(true);
-      // Clear localStorage on game over to reset game state
-      localStorage.clear();
-    };
   };
 
   //mall för meny
@@ -116,30 +124,71 @@ function Ingame() {
   menu.classList.add("menuBackground");
 
   const continueBtn: HTMLButtonElement = document.createElement("button");
-  continueBtn.classList.add("blueBtn");
+  continueBtn.classList.add("blueBtn", "menuBtn");
   continueBtn.textContent = "CONTINUE";
+  continueBtn.addEventListener("click", () => {
+    const menuMode = localStorage.getItem("menu");
+    if (menuMode === "lost" || menuMode === "won") {
+      document.querySelector("main")?.classList.add("disabled");
+    }
+    document.querySelector(".container")?.classList.remove("disabled");
+    document.querySelector(".ingameContainer")?.removeChild(menu);
+    playSFX(audioSelectMenu, 0.3);
+  });
 
   const newCatBtn: HTMLButtonElement = document.createElement("button");
-  newCatBtn.classList.add("blueBtn");
+  newCatBtn.classList.add("blueBtn", "menuBtn");
   newCatBtn.textContent = "NEW CATEGORY";
+  newCatBtn.addEventListener("click", () => {
+    navigate("/Category");
+    playSFX(audioSelectMenu, 0.3);
+  });
 
   const quitBtn: HTMLButtonElement = document.createElement("button");
-  quitBtn.classList.add("purpleBtn");
+  quitBtn.classList.add("purpleBtn", "menuBtn");
   quitBtn.textContent = "QUIT GAME";
+  quitBtn.addEventListener("click", () => {
+    navigate("/");
+    playSFX(audioSelectMenu, 0.3);
+  });
 
   containerMenuBtns.append(continueBtn, newCatBtn, quitBtn);
   menu.append(menuLogo, containerMenuBtns);
+  const [menuUpdated, setMenuUpdated] = useState(false);
 
-  if (error === 8) {
+  const showMenu = (gameStatus: string) => {
     const container = document.querySelector(".ingameContainer");
-    menuLogo.src = "src/assets/images/YouLose.svg";
+    menuLogo.src = `src/assets/images/${gameStatus}.svg`;
+
     if (!container?.querySelector(".menuBackground")) {
       container?.append(menu);
-      // menuLogo.textContent = "You Lose";
+      document.querySelector(".container")?.classList.add("disabled");
+      localStorage.setItem("menu", `${gameStatus}`);
     }
-  }
+    setMenuUpdated((prev) => !prev);
+    playSFX(audioSelect);
+  };
+  // load menu on refresh
+  useEffect(() => {
+    const menuMode = localStorage.getItem("menu");
 
-  //sound toggle icon
+    if (menuMode === "lost") {
+      showMenu("lost");
+    } else if (menuMode === "won") {
+      showMenu("won");
+    } else if (menuMode === "pause") {
+      showMenu("pause");
+    }
+  }, []);
+
+  //loose
+  useEffect(() => {
+    if (error === 8) {
+      playSFX(audioLost);
+      showMenu("lost");
+    }
+  }, [error]);
+
   const [isImageOne, setIsImageOne] = useState(true);
 
   const toggleImage = (): void => {
@@ -152,13 +201,13 @@ function Ingame() {
   // Apply hover sound effect
   useEffect(() => {
     const cleanup = addHoverSoundEffect(
-      ".key:not(.used), .menu:not(.used)",
+      ".key:not(.used), .menu:not(.used), .menuBtn",
       audioHover,
       100,
       0.2
     );
     return cleanup;
-  }, []);
+  }, [menuUpdated]);
 
   return (
     <div className="containerBackground">
@@ -166,7 +215,18 @@ function Ingame() {
         <div className="container">
           <header className="headerIngame">
             <div className="left">
-              <a className="menu">
+              <a
+                className="menu"
+                onClick={() => {
+                  const menuMode = localStorage.getItem("menu");
+                  menuMode === "won"
+                    ? showMenu("won")
+                    : menuMode === "lost"
+                    ? showMenu("lost")
+                    : showMenu("pause");
+                  console.log(menuMode);
+                }}
+              >
                 <img
                   src="src/assets/images/icon-menu.svg "
                   alt="menu"
@@ -214,7 +274,9 @@ function Ingame() {
                       <button
                         key={letterIndex}
                         className={`keyWord ${
-                          revealedLetters.includes(letter) ? "" : "hidden"
+                          revealedLetters.includes(letter) || letter === "'"
+                            ? ""
+                            : "hidden"
                         } ${letter}`}
                       >
                         {letter}
@@ -246,181 +308,3 @@ function Ingame() {
 }
 
 export default Ingame;
-
-//OLD CODE
-
-// import { useNavigate, useLocation } from "react-router-dom";
-// import { useState, useEffect, useRef } from "react";
-// import { playSFX, addHoverSoundEffect } from "./Utils";
-
-// function Ingame() {
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const audioRef = useRef<HTMLAudioElement>(null);
-
-//   const audioWrong = new Audio("/src/assets/Music/wrong.wav");
-//   const audioSelectCorrect = new Audio("/src/assets/Music/select_correct.wav");
-//   const audioHover = "/src/assets/SFX/select/hoverCategory.mp3";
-
-//   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-//   let error = 0;
-
-//   // Access the selected item from the state
-//   const selectedItem = location.state?.selectedItem;
-//   const category = location.state?.category;
-
-//   // State variable to store the selected word
-//   const [word, setWord] = useState("");
-
-//   // Set the word from selectedItem when the component mounts
-//   useEffect(() => {
-//     if (selectedItem) {
-//       setWord(selectedItem.name); // Store the name of the selected item
-//     }
-//   }, [selectedItem]);
-
-//   //Nav
-
-//   const goToCategory = () => {
-//     navigate("/Category");
-//   };
-
-//   const goToHomePage = () => {
-//     navigate("/");
-//   };
-
-//   const handleKeyboardClick = (letterBtn: string) => {
-//     const keyWordButtons = document.querySelectorAll(".keyWord");
-//     let foundMatch = false;
-
-//     keyWordButtons.forEach((button) => {
-//       if (button.classList.contains(letterBtn)) {
-//         button.classList.remove("hidden");
-//         foundMatch = true;
-//         playSFX(audioSelectCorrect);
-//       }
-//     });
-
-//     if (!foundMatch) {
-//       const healthBar = document.querySelector(
-//         ".healthLeft"
-//       ) as HTMLElement | null;
-//       playSFX(audioWrong);
-
-//       if (healthBar) {
-//         // Increment the error count
-//         error += 1;
-//         healthBar.classList.add(`error${error}`);
-//       }
-//     }
-
-//     document
-//       .querySelector(`.key[data-letter="${letterBtn}"]`)
-//       ?.classList.add("used");
-//   };
-
-//   const lost = () => {
-//     const [isGameOver, setIsGameOver] = useState(false);
-
-//     const handleGameOver = () => {
-//       setIsGameOver(true);
-//     };
-//   };
-
-//   if (error === 8) {
-//     lost();
-//   }
-
-//   //Musik
-//   // Set volume to 50% when the component mounts
-//   useEffect(() => {
-//     if (audioRef.current) {
-//       audioRef.current.volume = 0.05;
-//     }
-//   }, []);
-
-//   useEffect(() => {
-//     // Apply hover sound to all elements with the class .categoryButton
-//     const cleanup = addHoverSoundEffect(".key, .menu", audioHover, 100, 0.2);
-
-//     // Cleanup event listeners when component unmounts
-//     return cleanup;
-//   }, []); // Empty dependency array ensures this runs once after component mounts
-
-//   return (
-//     <div className="containerBackground">
-//       <div className="ingameContainer">
-//         {/* {isGameOver && (
-//           <div className="menu-overlay">
-//             <h1>Game Over</h1>
-//             <button onClick={() => setIsGameOver(false)}>Restart</button>
-//           </div>
-//         )} */}
-//         <div className="container">
-//           <header className="headerIngame">
-//             <div className="left">
-//               <a className="menu">
-//                 <img
-//                   src="src/assets/images/icon-menu.svg "
-//                   alt="menu"
-//                   className="menuSymbol"
-//                 />
-//               </a>
-//               <h1 className="headline">{`${category}`}</h1>
-//             </div>
-//             <div className="right">
-//               <div className="healthbar">
-//                 <div className="healthLeft"></div>
-//               </div>
-//               <div className="heartContainer">
-//                 <div className="heart"></div>
-//               </div>
-//             </div>
-//           </header>
-//           <main>
-//             <audio ref={audioRef} autoPlay loop>
-//               <source
-//                 src="/src/assets/Music/High_ES_WaitinLineMartinKlem.wav"
-//                 type="audio/wav"
-//               />
-//             </audio>
-//             <div className="wordContainer">
-//               {word
-//                 .toUpperCase()
-//                 .split(" ")
-//                 .map((word, wordIndex) => (
-//                   <div key={wordIndex} className="word">
-//                     {word.split("").map((letter, letterIndex) => (
-//                       <button
-//                         key={letterIndex}
-//                         className={`keyWord hidden ${letter}`}
-//                       >
-//                         {letter}
-//                       </button>
-//                     ))}
-//                   </div>
-//                 ))}
-//             </div>
-
-//             <div className="keyboard">
-//               {alphabet.map((letterBtn) => (
-//                 <button
-//                   key={letterBtn}
-//                   className="key"
-//                   data-letter={letterBtn}
-//                   onClick={() => handleKeyboardClick(letterBtn)}
-//                 >
-//                   {letterBtn}
-//                 </button>
-//               ))}
-//             </div>
-//           </main>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Ingame;
-
-<li id=""></li>;

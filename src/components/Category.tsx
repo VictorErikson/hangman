@@ -15,15 +15,15 @@ function Category() {
     navigate("/");
   };
 
-  // const goToIngame = () => {
-  //   navigate("/Ingame");
-  // };
   const handleCategoryClick = (category: string) => {
-    localStorage.removeItem("savedWord");
-    localStorage.removeItem("revealedLetters");
-    localStorage.removeItem("usedButtons");
-    localStorage.removeItem("errorCount");
-    localStorage.removeItem("isPlaying");
+    [
+      "savedWord",
+      "revealedLetters",
+      "usedButtons",
+      "errorCount",
+      "isPlaying",
+      "menu",
+    ].forEach((key) => localStorage.removeItem(key));
 
     fetch("/data.json")
       .then((response) => response.json())
@@ -42,7 +42,7 @@ function Category() {
   useEffect(() => {
     // Apply hover sound to all elements with the class .categoryButton
     const cleanup = addHoverSoundEffect(
-      ".categoryButton",
+      ".categoryButton, .back",
       audioHover,
       100,
       0.2
