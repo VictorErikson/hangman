@@ -3,7 +3,7 @@ import { playSFX } from "./Utils";
 
 function RulesPage() {
   const navigate = useNavigate();
-  const audioSelect = new Audio("/src/assets/Music/select_correct.wav");
+  const audioSelect = new Audio("/assets/Music/select_correct.wav");
 
   const goToHomePage = () => {
     playSFX(audioSelect);
@@ -17,7 +17,7 @@ function RulesPage() {
           <header>
             <a onClick={goToHomePage} className="back">
               <img
-                src="src/assets/images/icon-back.svg"
+                src="assets/images/icon-back.svg"
                 alt="back arrow"
                 className="backArrow"
               />

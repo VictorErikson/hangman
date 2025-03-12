@@ -4,10 +4,10 @@ import { playSFX, addHoverSoundEffect } from "./Utils";
 
 function Category() {
   const navigate = useNavigate();
-  const audioSelect = new Audio("/src/assets/Music/select_correct.wav");
-  const audioHover = "/src/assets/SFX/select/hoverCategory.mp3";
+  const audioSelect = new Audio("/assets/Music/select_correct.wav");
+  const audioHover = "/assets/SFX/select/hoverCategory.mp3";
   const audioSelectCat = new Audio(
-    "/src/assets/SFX/select/selectCategory/correct-2-46134.mp3"
+    "/assets/SFX/select/selectCategory/correct-2-46134.mp3"
   );
 
   const goToHomePage = () => {
@@ -56,7 +56,7 @@ function Category() {
           <header>
             <a onClick={goToHomePage} className="back">
               <img
-                src="src/assets/images/icon-back.svg "
+                src="/assets/images/icon-back.svg "
                 alt="back arrow"
                 className="backArrow"
               />

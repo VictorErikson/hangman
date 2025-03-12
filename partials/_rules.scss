@@ -38,12 +38,15 @@ header {
 
 .rulesContainer {
     min-height: 100vh;
-    // width: 100vw;
+    width: 97vw;
     //overflow: hidden;
     // min-height: 100%;
     .contaier {
         margin: 32px 26px;
-        height: 90%;
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         // min-height: 100%;
         
 
@@ -57,10 +60,11 @@ header {
             overflow: visible;
 
             section {
-                min-width: 100%;
+                // min-width: 100%;
+                max-width: 480px;
                 background: $white;
                 border-radius: 20px;
-                padding: 10%;
+                padding: 32px;
                 @include flexColumn();
                 margin: 1rem;
                 overflow: hidden;

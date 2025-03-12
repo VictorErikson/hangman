@@ -7,14 +7,14 @@ function Ingame() {
   const location = useLocation();
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const audioWrong = new Audio("/src/assets/Music/wrong.wav");
-  const audioSelectCorrect = new Audio("/src/assets/Music/select_correct.wav");
-  const audioHover = "/src/assets/SFX/select/hoverCategory.mp3";
-  const audioSelect = new Audio("/src/assets/Music/select_correct.wav");
-  const audioLost = new Audio("/src/assets/SFX/lost/lost.mp3");
-  const audioWon = new Audio("/src/assets/SFX/win/winning.mp3");
+  const audioWrong = new Audio("/assets/Music/wrong.wav");
+  const audioSelectCorrect = new Audio("/assets/Music/select_correct.wav");
+  const audioHover = "/assets/SFX/select/hoverCategory.mp3";
+  const audioSelect = new Audio("/assets/Music/select_correct.wav");
+  const audioLost = new Audio("/assets/SFX/lost/lost.mp3");
+  const audioWon = new Audio("/assets/SFX/win/winning.mp3");
   const audioSelectMenu = new Audio(
-    "/src/assets/SFX/select/selectCategory/correct-2-46134.mp3"
+    "/assets/SFX/select/selectCategory/correct-2-46134.mp3"
   );
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -158,7 +158,7 @@ function Ingame() {
 
   const showMenu = (gameStatus: string) => {
     const container = document.querySelector(".ingameContainer");
-    menuLogo.src = `src/assets/images/${gameStatus}.svg`;
+    menuLogo.src = `assets/images/${gameStatus}.svg`;
 
     if (!container?.querySelector(".menuBackground")) {
       container?.append(menu);
@@ -228,7 +228,7 @@ function Ingame() {
                 }}
               >
                 <img
-                  src="src/assets/images/icon-menu.svg "
+                  src="assets/images/icon-menu.svg "
                   alt="menu"
                   className="menuSymbol"
                 />
@@ -243,15 +243,9 @@ function Ingame() {
               </div>
               <button className="volume" onClick={toggleImage}>
                 {isImageOne ? (
-                  <img
-                    src="/src/assets/symbols/volume_on.svg"
-                    alt="volumeIsOn"
-                  />
+                  <img src="/assets/symbols/volume_on.svg" alt="volumeIsOn" />
                 ) : (
-                  <img
-                    src="/src/assets/symbols/volume_off.svg"
-                    alt="volumeIsOff"
-                  />
+                  <img src="/assets/symbols/volume_off.svg" alt="volumeIsOff" />
                 )}
               </button>
             </div>
@@ -259,7 +253,7 @@ function Ingame() {
           <main>
             <audio ref={audioRef} autoPlay loop>
               <source
-                src="/src/assets/Music/High_ES_WaitinLineMartinKlem.wav"
+                src="/assets/Music/High_ES_WaitinLineMartinKlem.wav"
                 type="audio/wav"
               />
             </audio>

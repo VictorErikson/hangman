@@ -1,6 +1,6 @@
 @font-face {
   font-family: "MouseMemoirs";
-  src: url("../src/assets/fonts/MouseMemoirs-Regular.ttf") format("truetype");
+  src: url("/fonts/MouseMemoirs-Regular.ttf") format("truetype");
 }
 * {
   margin: 0;
@@ -16,7 +16,9 @@
 }
 
 .containerBackgroundHome.containerBackground {
-  background-image: url(src/assets/images/background-mobile.svg);
+  background-image: url(/assets/images/background-mobile.svg);
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .containerBackground {
@@ -25,8 +27,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  justify-content: flex-start;
   flex-shrink: 1;
-  background: linear-gradient(180deg, rgba(26, 4, 58, 0.75) 0%, rgba(21, 18, 120, 0.75) 70.31%, rgba(43, 22, 119, 0.75) 100%), url(src/assets/images/background-mobile.svg);
+  background: linear-gradient(180deg, rgba(26, 4, 58, 0.75) 0%, rgba(21, 18, 120, 0.75) 70.31%, rgba(43, 22, 119, 0.75) 100%), url(/assets/images/background-mobile.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -66,7 +69,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
   flex-shrink: 1;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -111,17 +114,17 @@
      -moz-user-select: none;
           user-select: none;
   background-clip: padding-box;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
   user-select: none;
   margin-bottom: 20%;
   text-decoration: none;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
   flex-shrink: 1;
   transition: all 0.4s;
 }
 .containerBackground .menuBackground .howToPlay:hover {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
 }
 .containerBackground .menuBackground .howToPlay:hover {
   transform: scale(1.06);
@@ -160,7 +163,7 @@ header .back {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -198,10 +201,14 @@ header .headline {
 
 .rulesContainer {
   min-height: 100vh;
+  width: 97vw;
 }
 .rulesContainer .contaier {
   margin: 32px 26px;
-  height: 90%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .rulesContainer .contaier main {
   min-width: 100%;
@@ -215,10 +222,10 @@ header .headline {
   overflow: visible;
 }
 .rulesContainer .contaier main section {
-  min-width: 100%;
+  max-width: 480px;
   background: #FFFFFF;
   border-radius: 20px;
-  padding: 10%;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -270,15 +277,16 @@ header .headline {
 
 .categoryContainer {
   min-height: 100vh;
-  width: 100vw;
+  width: 97vw;
   display: flex;
   flex-direction: column;
 }
 .categoryContainer .container {
-  margin: 32px 26px;
-  min-height: 80%;
+  padding: 32px 26px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .categoryContainer .container header {
   display: flex;
@@ -292,7 +300,6 @@ header .headline {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
   flex-grow: 1;
 }
 .categoryContainer .container main .categoryButton {
@@ -318,7 +325,7 @@ header .headline {
      -moz-user-select: none;
           user-select: none;
   background-clip: padding-box;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
   user-select: none;
   width: 100%;
   margin-bottom: 1rem;
@@ -326,18 +333,21 @@ header .headline {
 }
 .categoryContainer .container main .categoryButton:hover {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
 }
 
+.ingameContainer {
+  min-height: 100vh;
+}
 .ingameContainer .container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 .ingameContainer .container .headerIngame {
-  width: 100vw;
+  width: 97vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -364,7 +374,7 @@ header .headline {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -470,7 +480,7 @@ header .headline {
 .ingameContainer .container main {
   padding: 10px;
   padding-top: 100px;
-  width: 100vw;
+  width: 97vw;
   max-height: 800px;
   display: flex;
   flex-direction: column;
@@ -610,7 +620,7 @@ header .headline {
 .ingameContainer .menuBackground .containerMenuBtns button {
   margin-bottom: 20%;
   text-decoration: none;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
   flex-shrink: 1;
   transition: all 0.4s;
   display: inline-flex;
@@ -635,12 +645,12 @@ header .headline {
      -moz-user-select: none;
           user-select: none;
   background-clip: padding-box;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
   user-select: none;
 }
 .ingameContainer .menuBackground .containerMenuBtns button:hover {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
-  cursor: url("src/assets/Pointer.svg"), auto;
+  cursor: url("/assets/Pointer.svg"), auto;
 }
 .ingameContainer .menuBackground .containerMenuBtns button:hover {
   transform: scale(1.06);

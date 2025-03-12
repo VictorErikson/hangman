@@ -12,18 +12,22 @@
 
 
 .containerBackgroundHome.containerBackground{
-    background-image: url(src/assets/images/background-mobile.svg);
-
+    background-image: url(/assets/images/background-mobile.svg);
+    justify-content: center;
+    min-height: 100vh;
 }
 
 
 
 .containerBackground {
     // width: 100vw;
+    // min-height: 800px;
     min-height: 100vh;
     @include flexColumn();
+    // width: 100vw;
+    justify-content: flex-start;
     flex-shrink: 1;
-    background: linear-gradient(180deg, rgba(26, 4, 58, 0.75) 0%, rgba(21, 18, 120, 0.75) 70.31%, rgba(43, 22, 119, 0.75) 100%), url(src/assets/images/background-mobile.svg);
+    background: linear-gradient(180deg, rgba(26, 4, 58, 0.75) 0%, rgba(21, 18, 120, 0.75) 70.31%, rgba(43, 22, 119, 0.75) 100%), url(/assets/images/background-mobile.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
