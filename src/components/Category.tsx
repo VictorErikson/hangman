@@ -28,11 +28,10 @@ function Category() {
     fetch("/data.json")
       .then((response) => response.json())
       .then((jsonData) => {
-        // Access the specific category array inside "categories"
         const categoryData = jsonData.categories[category];
         const randomItem =
           categoryData[Math.floor(Math.random() * categoryData.length)];
-        // Navigate to /Ingame with the category data
+
         playSFX(audioSelectCat, 0.3);
         navigate("/Ingame", { state: { selectedItem: randomItem, category } });
       })
@@ -40,7 +39,6 @@ function Category() {
   };
 
   useEffect(() => {
-    // Apply hover sound to all elements with the class .categoryButton
     const cleanup = addHoverSoundEffect(
       ".categoryButton, .back",
       audioHover,
@@ -48,9 +46,8 @@ function Category() {
       0.2
     );
 
-    // Cleanup event listeners when component unmounts
     return cleanup;
-  }, []); // Empty dependency array ensures this runs once after component mounts
+  }, []);
 
   return (
     <div className="containerBackground">
