@@ -25,7 +25,7 @@ function Category() {
       "menu",
     ].forEach((key) => localStorage.removeItem(key));
 
-    fetch("/data.json")
+    fetch("/hangman-game-react/data.json")
       .then((response) => response.json())
       .then((jsonData) => {
         const categoryData = jsonData.categories[category];
