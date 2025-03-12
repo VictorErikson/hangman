@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { AudioProvider } from "./components/AudioContext";
-import HomePage from "./components/HomePage";
 
+import HomePage from "./components/HomePage";
 import RulesPage from "./components/RulesPage";
 import Category from "./components/Category";
 import Ingame from "./components/Ingame";

@@ -45,7 +45,7 @@ export const AudioProvider: React.FC<AudioProviderProps> = ({ children }) => {
     <AudioContext.Provider value={audioRef}>
       <audio
         ref={audioRef}
-        src="/assets/Music/Low_ES_SundayBluesHaraNoda.wav"
+        src="assets/Music/Low_ES_SundayBluesHaraNoda.wav"
         loop
         autoPlay
       />

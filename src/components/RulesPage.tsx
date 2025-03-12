@@ -3,7 +3,7 @@ import { playSFX } from "./Utils";
 
 function RulesPage() {
   const navigate = useNavigate();
-  const audioSelect = new Audio("/assets/Music/select_correct.wav");
+  const audioSelect = new Audio("assets/Music/select_correct.wav");
 
   const goToHomePage = () => {
     playSFX(audioSelect);

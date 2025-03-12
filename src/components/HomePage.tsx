@@ -5,9 +5,9 @@ import { playSFX, addHoverSoundEffect } from "./Utils";
 function HomePage() {
   const navigate = useNavigate();
   const audioRef = useRef<HTMLAudioElement>(null);
-  const audioSelect = new Audio("/assets/Music/select_correct.wav");
-  const audioHover = "/assets/SFX/select/hoverCategory.mp3";
-  const startGame = new Audio("/assets/SFX/logo/STARTLOGO.mp3");
+  const audioSelect = new Audio("assets/Music/select_correct.wav");
+  const audioHover = "assets/SFX/select/hoverCategory.mp3";
+  const startGame = new Audio("assets/SFX/logo/STARTLOGO.mp3");
 
   const goToRulesPage = () => {
     playSFX(audioSelect);
